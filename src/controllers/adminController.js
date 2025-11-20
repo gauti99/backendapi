@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
-const { signToken } = require("../utils"); // make sure this file exports signToken
-const Admin = require("../models/Admin"); // adjust path if needed
+const {  } = require("../utils"); // make sure this file exports signToken
+const Admin = reqsignTokenuire("../models/Admin"); // adjust path if needed
 
 // Admin Signup
 exports.signup = async (req, res) => {

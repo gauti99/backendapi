@@ -9,9 +9,9 @@ const {
   getProfile,
   updateProfile,
   changePassword
-} = require('../../config/controllers/adminController.js');
+} = require("../controllers/adminController.js");
 
-const { verifyToken } = require('../../middlewares/auth.js');  // your working middleware
+const { verifyToken } = require('../middlewares/auth.js');  // your working middleware
 
 // Public
 router.post('/signup', signup);
