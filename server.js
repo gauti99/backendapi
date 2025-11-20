@@ -16,8 +16,9 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/monolithdb
 connectDB(MONGO_URI);
 
 
-app.use('/api/admin', adminRoutes);
-app.use('/api/driver', driverRoutes);
+// server.js
+app.use('/api/admin', require('./routes/adminRoutes.js'));   // this is fine
+app.use('/api/driver', require('./routes/driverRoutes.js')); // this too
 
 
 app.get('/', (req, res) => res.send('Monolith API running'));

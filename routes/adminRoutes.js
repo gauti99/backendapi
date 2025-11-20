@@ -1,21 +1,25 @@
+// routes/adminRoutes.js
 const express = require('express');
-const { signup, login, getProfile, addDriver, listDrivers, setDriverActive } = require('../controllers/adminController');
-const { verifyToken } = require('../middlewares/auth');
-
-
 const router = express.Router();
 
+// CORRECT PATHS
+const {
+  signup,
+  login,
+  getProfile,
+  updateProfile,
+  changePassword
+} = require('../../config/controllers/adminController.js');
 
+const { verifyToken } = require('../../middlewares/auth.js');  // your working middleware
+
+// Public
 router.post('/signup', signup);
 router.post('/login', login);
 
-
-router.get('/me', verifyToken('admin'), getProfile);
-
-
-router.post('/drivers', verifyToken('admin'), addDriver);
-router.get('/drivers', verifyToken('admin'), listDrivers);
-router.patch('/drivers/:id/active', verifyToken('admin'), setDriverActive);
-
+// Protected - only admin
+router.get('/profile', verifyToken(['admin']), getProfile);
+router.put('/profile', verifyToken(['admin']), updateProfile);
+router.put('/change-password', verifyToken(['admin']), changePassword);
 
 module.exports = router;
